@@ -2,7 +2,7 @@ import { Client, GatewayIntentBits, Partials, TextChannel, EmbedBuilder, ButtonB
 import { storage } from './storage';
 
 // Configuration from prompt
-const BOT_TOKEN = "MTQ2OTgwODI3NDc4MTExNDM4OQ.G0IZVy.BGorirf9D8krBC1vNdnYtw_IyqoaBE4RJwuIko";
+const BOT_TOKEN = "MTQ2OTgwODI3NDc4MTExNDM4OQ.GAcQom.wL8EG7r_CTrJCjXBZr_481BpVeGVhwiHaDXh4A";
 const ALLOWED_ROLE_ID = "1467499741238788192";
 const PREFIX = ",linkvertise";
 
