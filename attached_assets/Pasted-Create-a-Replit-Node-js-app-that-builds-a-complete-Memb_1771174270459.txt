@@ -1,0 +1,253 @@
+Create a **Replit Node.js app** that builds a complete **Member Net verification system** using a Discord bot and a verification webpage.
+
+⚠️ IMPORTANT RULES
+
+* Maximum **4 files total**
+* Use ONLY **HTML, CSS, JavaScript (Node.js)**
+* ❌ No TypeScript
+* ❌ No frameworks
+* ❌ No databases
+* Must be stable and bug-free
+
+---
+
+## 🎯 SYSTEM PURPOSE
+
+Users verify through Linkvertise and receive a temporary Discord role.
+
+Flow:
+
+1. Staff runs command
+2. Bot posts verification panel
+3. User clicks **Get Code**
+4. Complets Linkvertise
+5. Visits `/verify` page
+6. Receieves personal code + countdown timer
+7. Submits code in Discord
+8. Gets role for 3 hours
+
+Main site base:
+https://member-net-verify.up.railway.app
+
+⚠️ The app must work on the current domain dynamically.
+
+---
+
+## 📁 FILE STRUCTURE (MAX 4)
+
+```
+index.js        → bot + web server + code system
+verify.html     → verification page
+style.css       → page styling
+script.js       → verify page logic
+```
+
+---
+
+## 🔑 BOT SETUP
+
+At top of **index.js**:
+
+```
+const BOT_TOKEN = "MTQ2OTgwODI3NDc4MTExNDM4OQ.GcY4xX.vLIVUUxkhPP-8o9B0g9g8if9xF5cF3kI1ar7t0";
+```
+
+Bot logs in automatically when the app starts.
+
+---
+
+## 👮 COMMAND PERMISSIONS
+
+Use prefix commands.
+
+### Command:
+
+`,linkvertise #channel @role <link>`
+
+Only users with this role ID may use the command:
+
+```
+1467499741238788192
+```
+
+If unauthorized → ignore command.
+
+---
+
+## 📩 PANEL MESSAGE
+
+Bot sends an embed to the chosen channel.
+
+### Embed
+
+**Title:** Unlock Your Free Role
+
+Unlock the role mentioned by completing verification below.
+
+✔ fast
+✔ secure
+✔ automatic
+
+**How it works**
+
+1. Click **Get Code**
+2. Finish the guide
+3. Visit the verification page
+4. Copy your personal code
+5. Submit it to unlock access
+
+Each code is unique and expires automatically.
+
+---
+
+## 🔘 PANEL BUTTONS
+
+### 🔹 Get Code
+
+* Opens the Linkvertise link provided in the command.
+* After completion user lands on:
+
+```
+/verify
+```
+
+---
+
+### 🔹 Submit Code
+
+When clicked:
+
+Opens a modal input field
+
+Requirements:
+
+* required
+* exactly 12 characters
+
+Format:
+
+```
+XXX-XXX-XXX
+```
+
+---
+
+## 🌐 VERIFY PAGE BEHAVIOR
+
+Centered card layout.
+
+### Shows:
+
+**Your Verification Code**
+
+```
+ABC-7F2-K9Q
+```
+
+✔ random letters & numbers
+✔ unique per user
+✔ not shared
+
+---
+
+### ⏱ Countdown Timer
+
+Display:
+
+```
+Code expires in: 02:59:59
+```
+
+Rules:
+
+* Timer resets every 3 hours globally
+* Every user has a DIFFERENT code
+* Countdown is the SAME for everyone
+* When timer reaches 0 → codes regenerate & old codes become invalid
+
+---
+
+### 📋 Copy Button
+
+Copies code to clipboard.
+
+---
+
+## 🔄 CODE SYSTEM LOGIC
+
+✔ unique code per Discord user
+✔ stored in memory
+✔ auto regenerate every 3 hours
+✔ invalid after use
+✔ invalid after expiration
+✔ cannot reuse codes
+✔ cannot use someone else's code
+
+---
+
+## ✅ SUBMITTING CODE
+
+User clicks **Submit Code** button in Discord.
+
+Bot verifies:
+
+IF code matches user's active code:
+
+✅ give the role that was specified in command
+⏳ role duration: 3 hours
+📩 send DM:
+
+* role received
+* expiration time
+
+IF invalid:
+❌ show error message
+
+---
+
+## ⏳ ROLE EXPIRATION
+
+After 3 hours:
+
+✔ role automatically removed
+
+---
+
+## 📝 CONSOLE LOGS
+
+Log:
+
+* successful verifications
+* failed attempts
+* role granted
+* expiration timestamp
+
+---
+
+## 🛡 SECURITY
+
+✔ prevent spam attempts
+✔ prevent code reuse
+✔ prevent cross-user usage
+✔ ignore expired codes
+
+---
+
+## ▶️ WHEN APP RUNS
+
+✔ bot logs in
+✔ web server starts
+✔ `/verify` works
+✔ command works instantly
+
+---
+
+## 🎯 FINAL RESULT
+
+A fully working Discord verification system:
+
+✔ unique per-user codes
+✔ shared global countdown
+✔ Linkvertise verification
+✔ temporary role access
+✔ secure & automated
